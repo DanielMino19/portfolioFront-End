@@ -1,3 +1,34 @@
 <footer class="footer">
-         
+         <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">Daniel</h1>
+                    <span class="footer__subtitle">FullStack developer</span>
+                </div>
+                <ul class="footer__links">
+                    <li>
+                        <a href="#services" class="footer__link" (click)="scrollToSection($event)">Services</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="footer__link" (click)="scrollToSection($event)">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="footer__link" (click)="scrollToSection($event)">Contact Me</a>
+                    </li>
+                </ul>
+                <div class="footer__socials">
+                    <a href="https://www.linkedin.com/in/daniel-miño-b89b76200/" target="_blank" class="footer__social">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/DanielMino19" target="_blank" class="footer__social">
+                        <i class="bi bi-github"></i>
+                    </a>
+                </div>
+                <p class="footer__copy">&#169;Dani. All right reserved</p>
+            </div>
+         </div>
 </footer>
+        <!-- Scroll top -->
+        <a href="#" class="scrollup" id="scroll-up" (click)="scrollToSection($event)">
+            <i class="bi bi-arrow-up scrollup__icon"></i>
+        </a>
