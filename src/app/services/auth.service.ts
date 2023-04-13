@@ -1,23 +1,36 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  url="http://localhost:8080/login";
+  currentUserSubject: BehaviorSubject<any>;
+  constructor(private http: HttpClient) {
+    console.log("El servicio de autenticacion esta corriendo")
+    this.currentUserSubject= new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')|| '{}'))
+   }
 
-  // login del ususario en ReqRes
-  login(email:string, password:string): Observable<any>{
-    let body = {
-      email: email,
-      password: password,
-    }
-
-    return this.http.post('https://reqres.in/api/login', body)
+   IniciarSesion(credentials: any): Observable<HttpResponse<any>> {
+    return this.http.post(this.url, credentials, { observe: 'response' }).pipe(
+      map(response => {
+        const bearerToken = response.headers.get('Authorization');
+        if(bearerToken){
+        const token = bearerToken.replace('Bearer', '');
+        sessionStorage.setItem('token', token);
+      }
+        return response;
+      })
+    );
   }
 
+  get UsuarioAuthenticado()
+  {
+    return this.currentUserSubject.value;
+  }
 
 }

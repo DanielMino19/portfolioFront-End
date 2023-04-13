@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login-page',
@@ -8,37 +10,40 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-  
-  constructor(private router: Router, private authService: AuthService ){}
+  form:FormGroup;
 
-  email: string = 'eve.holt@reqres.in';
-  password: string = '';
 
-  ngOnInit(): void {
-      let token = sessionStorage.getItem('token')
-
-    if(token){
-      this.router.navigate(['home'])
-    }
+  constructor(private formBuilder:FormBuilder, private auth:AuthService, private ruta:Router){
+    this.form=this.formBuilder.group(
+      {
+        email:['',[Validators.required,Validators.email]],
+        password:['',[Validators.required, Validators.minLength(8)]]
+      }
+    )
 
   }
 
-  loginUser(){
 
-    this.authService.login(this.email, this.password).subscribe(
-      (response)=>{
-        if(response.token){
-          sessionStorage.setItem('token', response.token);
-          this.router.navigate(['home']);
-        }
-      },
-      (error)=>{
-        console.error(`Ha habido un errror al hacer el login: ${error}`)
-      },
-      ()=>{
-        console.info('Peticion de login terminado')
-      }
-      )
 
-} 
+  ngOnInit(): void {
+  }
+
+  get Email()
+  {
+    return this.form.get('email');
+  }
+
+  get Password()
+  {
+    return this.form.get('password');
+  }
+
+  onEnviar(event:Event){
+    event.preventDefault;
+    this.auth.IniciarSesion(this.form.value).subscribe(data=>{
+      console.log("DATA:" + JSON.stringify(data));
+      this.ruta.navigate(['/home']);
+    })
+  }
+
 }
