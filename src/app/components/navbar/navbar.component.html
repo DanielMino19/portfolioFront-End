@@ -1,5 +1,5 @@
 <header >
-    <nav class="navbar navbar-expand-md  custom" [class.scrolled]="isScrolled">
+    <nav class="navbar navbar-expand-lg  custom" [class.scrolled]="isScrolled">
         <div class="container-fluid">
           <a class="navbar-brand" href="#home" (click)="scrollToSection($event)">Daniel</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,8 +42,11 @@
             <!-- theme change buttom -->
             <i class="change-theme bi"*ngIf="currentRoute !== '/login'" [ngClass]="{'bi-moon': !isDarkTheme, 'bi-brightness-high': isDarkTheme}" id="theme-button"></i>
             <div class="color-picker-container">
-            <input type="color" class="color-picker" [(ngModel)]="hueColor" (change)="cambiarHueColor(hueColor)" />
-          </div>
+              <label for="color-picker" class="color-picker-label">
+                <div class="color-picker-circle"><i class="bi bi-paint-bucket icon"></i></div>
+              </label>
+              <input type="color" id="color-picker" class="color-picker" [(ngModel)]="hueColor" (input)="cambiarHueColor(hueColor)" />
+            </div>
           </div>
         </div>
       </nav>

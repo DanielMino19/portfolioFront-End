@@ -19,10 +19,12 @@
                 Demo
                 <i class="bi bi-arrow-right button__icon"></i>
               </a>
+              <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)" (click)="editSwipper(item.id)">Editar</button>
+              <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)"  (click)="deleteSwipper(item.id)">Borrar</button>
             </div>
-            <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)" (click)="editSwipper(item.id)">Editar</button>
-            <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)"  (click)="deleteSwipper(item.id)">Borrar</button>
+           
           </div>
+          
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -34,6 +36,15 @@
         </button>
        
       </div>
+      <div *ngIf="isEditing">
+        <form (submit)="updateSwipper()">
+            <input class="contact__input" type="text" name="title" [(ngModel)]="selectedSwipper.title" placeholder="Title">
+            <input  class="contact__input" type="text" name="icono" [(ngModel)]="selectedSwipper.subtitle" placeholder="Lugar-tipo">
+            <input  class="contact__input" type="text" name="icono" [(ngModel)]="selectedSwipper.date" placeholder="date-date">
+            <button class="button button--flex button--small button--link" type="submit">Guardar</button>
+            <button class="button button--flex button--small button--link" type="button" (click)="cancelSwipper()">Cancelar</button>
+        </form>
+    </div>
       <div *ngIf="(authService.isLoggedIn | async)">
         <form (submit)="createSwipper()">
         <input class="contact__input" type="text" name="title" [(ngModel)]="newSwipper.title" placeholder="Titulo">

@@ -82,7 +82,7 @@ export class CarouselComponent implements OnInit {
   }
 
   // Cancelar la edición de un swipper
-  canceSwipper(): void {
+  cancelSwipper(): void {
     this.selectedSwipper = {};
     this.isEditing = false;
   }

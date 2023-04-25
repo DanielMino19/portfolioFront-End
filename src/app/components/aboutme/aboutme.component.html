@@ -20,13 +20,13 @@
                         </div>
 
                         <div class="home__data" >
-                            <h1 class="home__title" >Hi, I'am Daniel.</h1>
+                            <h1 class="home__title" >Hi, I'am Daniel</h1>
                             <h3 class="home__subtitle" *ngIf="!editando">{{titulo}}</h3>
                             <p class="home__descriptio" *ngIf="!editando">
                                 {{parrafo}}
                             </p>
                             <button *ngIf="(authService.isLoggedIn | async)" class="button button--flex button--small button--link " (click)="editando = true">Edit<i class="bi bi-pencil button__icon"></i></button>
-                            <a href="#contact" class="button button--flex">
+                            <a href="#contact" (click)="scrollToSection($event)" class="button button--flex">
                                 Contact Me <i class="bi bi-envelope-paper button__icon"></i>
                              </a>
                             <div *ngIf="editando" class="services__modal-content">
@@ -90,11 +90,7 @@
                         </div>
                     </div>
 
-                    <div class="about__buttons">
-                        <a download="" href="" class="button button--flex">
-                            Download CV <i class="bi bi-download button__icon "></i>
-                        </a>
-                    </div>
+              
 
                 </div>
             </section>

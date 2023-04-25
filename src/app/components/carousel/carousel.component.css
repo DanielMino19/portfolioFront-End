@@ -4,8 +4,10 @@
     border-radius: 50%;
   }
   button{
-    display: inline-flex;
+    display: flex;
     margin-right: 6px;
     border: 0;
-
+    margin-top: 3px;
+    text-align: center;
+    align-items: center;
  }

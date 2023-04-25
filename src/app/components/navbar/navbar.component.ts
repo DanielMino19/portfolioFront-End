@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     this.darktheme();
-    
+    this.cambiarHueColor;
   }
 
   cambiarHueColor(color: string) {
@@ -31,7 +31,10 @@ export class NavbarComponent implements OnInit, AfterViewInit{
     const hue = Number(matches![0]);
     document.documentElement.style.setProperty('--hue-color', hue.toString());
   }
-
+  getColor() {
+    const hue = getComputedStyle(document.documentElement).getPropertyValue('--hue-color');
+    return hue;
+  }
 
   logout(){
     sessionStorage.removeItem('token')
