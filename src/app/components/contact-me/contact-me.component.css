@@ -1,0 +1,4 @@
+input:-internal-autofill-selected{
+    background-color: var(--first-color) ;
+    
+}

@@ -19,30 +19,42 @@
                 </div>
             </div>
 
-            <form action="" class="contact__form grid">
+            <form [formGroup]="myForm" (submit)="sendEmail($event)" class="contact__form grid">
                 <div class="contact__inputs grid">
                     <div class="contact__content">
-                        <label for="" class="contact__label">Name</label>
-                        <input type="text" class="contact__input">
+                        <label for="from_name" class="contact__label">Name</label>
+                        <input type="text" formControlName="from_name" name="from_name" id="from_name" class="contact__input">
+                        <div *ngIf="myForm.controls['from_name'].touched && myForm.controls['from_name'].invalid" class="text-danger form-text">
+                            Name is required.
+                          </div>
                     </div>
                     <div class="contact__content">
-                        <label for="" class="contact__label">Email</label>
-                        <input type="Email" class="contact__input">
+                        <label for="email" class="contact__label">Email</label>
+                        <input type="email" formControlName="email" name="email" id="email" class="contact__input">
+                            <div *ngIf="myForm.controls['email'].touched && myForm.controls['email'].invalid" class="text-danger form-text">
+                            Email is required.
+                          </div>
+                          <div *ngIf="myForm.controls['email'].touched && myForm.controls['email'].hasError('pattern')" class="text-danger form-text">
+                            The email format must be valid.
+                          </div>
                     </div>
                     <div class="contact__content">
-                        <label for="" class="contact__label">project</label>
-                        <input type="Email" class="contact__input">
+                        <label for="project" class="contact__label">project</label>
+                        <input type="text" formControlName="project" name="project" id="project" class="contact__input">
                     </div>
                     <div class="contact__content">
                         <label for="" class="contact__label">Message</label>
-                        <textarea name="" id="" cols="0" rows="7" class="contact__input"></textarea>
+                        <textarea formControlName="message" name="message" id="message" cols="0" rows="7" class="contact__input"></textarea>
+                        <div *ngIf="myForm.controls['message'].touched && myForm.controls['message'].invalid" class="text-danger form-text">
+                            message requires 10 characters
+                        </div>
                     </div>
-
+            
                     <div>
-                        <a href="" class="button button--flex">
+                        <button id="button" type="submit" class="button button--flex" [disabled]="!myForm.valid" >
                             Send Message
                             <i class="bi bi-send button__icon"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </form>

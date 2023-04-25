@@ -6,24 +6,19 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class InterceptorService implements HttpInterceptor{
+export class InterceptorService implements HttpInterceptor {
 
-  constructor(private auth:AuthService) { }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = sessionStorage.getItem('token');
 
-    var currentUser=this.auth.UsuarioAuthenticado;
-    if(currentUser && currentUser.accesToken)
-    {
-      req=req.clone({
-        setHeaders:{
-          Authorization: `Bearer ${currentUser.accesToken}`
-        }
-      })
+    if (token) {
+      const cloned = request.clone({
+        headers: request.headers.set('Authorization', `Bearer ${token}`)
+      });
+      return next.handle(cloned);
     }
-    console.log("interceptor esta corriendo" + JSON.stringify(currentUser));
-    return next.handle(req);
+    return next.handle(request);
   }
-  
+
 }

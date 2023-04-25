@@ -8,9 +8,10 @@
 
     /*========== Colors ==========*/
     /* Change color  */
-    --hue-color: 250; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
+    --hue-color: 250
+    ; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
 
-    /* HSL color mode is values are supported in Ie9+,Firefoc, Chrome,Safari,and in Opera10+ */
+
     --first-color: hsl(var(--hue-color), 69%, 61%);
     --first-color-second: hsl(var(--hue-color), 69%, 61%);
     --first-color-alt: hsl(var(--hue-color), 57%, 53%);
@@ -499,6 +500,7 @@ img{
 }
 
 .qualification__rounder{
+
     display: inline-block;
     width: 13px;
     height: 13px;
@@ -507,15 +509,25 @@ img{
 }
 
 .qualification__line{
+    height: 100%;
+    width: 10px;
+    background-color: var(--first-color);
+    z-index: 900;
+
+}
+
+/* .qualification__line{
+    background-color: greenyellow;
     display: block;
     width: 1px;
     height: 100%;
-    background-color: var(--first-color);
+    /* background-color: var(--first-color); 
     transform: translate(6px, -7px);
-}
+} */
 
 .qualification [data-content]{
     display: none;
+    
 }
 
 .qualification__active[data-content]{

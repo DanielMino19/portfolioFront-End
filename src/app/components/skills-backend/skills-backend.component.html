@@ -1,0 +1,42 @@
+<div class="skills__content skills__close"  [class.skills__open]="showSkillsContent" [class.skills__close]="!showSkillsContent" >
+    <div class="skills__header" (click)="toggleSkillsContent()">
+        <i class="bi bi-hdd-rack skills__icon"></i>
+
+        <div>
+            <h1 class="skills__titles">Backend developer</h1>
+            <span class="skills__subtitle">More than 1 years</span>
+        </div>
+        
+        <i class="bi bi-caret-down skills__arrow"></i>
+    </div>
+
+
+    <div *ngFor="let skillBackend of skillsBackend" class="skills__list grid">
+        <div class="skills__data">
+          <div class="skills__content">
+            <img [src]="skillBackend.icono" alt="Skills iconos" class="skills__icon">
+            <h3 class="skills__name">{{ skillBackend.title }}</h3>
+          </div>
+          <div class="skills__buttons">
+            <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)" (click)="editSkillBackend(skillBackend.id)">Editar</button>
+            <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)"  (click)="deleteSkillBackend(skillBackend.id)">Borrar</button>
+          </div>
+        </div>
+      </div>
+    <div *ngIf="isEditing">
+        <form (submit)="updateSkillBackend()">
+            <input class="contact__input" type="text" name="title" [(ngModel)]="selectedSkillBackend.title" placeholder="Nombre">
+            <input  class="contact__input" type="text" name="icono" [(ngModel)]="selectedSkillBackend.icono" placeholder="Icono Link">
+            <button class="button button--flex button--small button--link" type="submit">Guardar</button>
+            <button class="button button--flex button--small button--link" type="button" (click)="cancelEditBackend()">Cancelar</button>
+        </form>
+    </div>
+
+</div>
+<div *ngIf="(authService.isLoggedIn | async)">
+    <form (submit)="createSkillBackend()">
+    <input class="contact__input" type="text" name="title" [(ngModel)]="newSkillBackend.title" placeholder="Nombre">
+    <input  class="contact__input" type="text" name="icono" [(ngModel)]="newSkillBackend.icono" placeholder="Icono Link">
+    <button class="button button--flex button--small button--link" type="submit">Crear skill</button>
+    </form>
+</div>

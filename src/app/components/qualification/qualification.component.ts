@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { QeducationService } from 'src/app/services/qeducation.service';
 
 @Component({
   selector: 'app-qualification',
@@ -6,8 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./qualification.component.css']
 })
 export class QualificationComponent implements OnInit{
+    isDesktop:boolean
+    qeducation: any[] = [];
+    newQeducation={
+      title: "",
+      subtitle: "",
+      date: ""
+    }
+    isEditing:boolean = false;
+    selectedQeducation:any;
+   
+
+    
+    constructor(private qeducationService: QeducationService, public authService: AuthService){
+      this.isDesktop = window.innerWidth > 768;
+    }
+
 
     ngOnInit(): void {
+      this.getAllQEducation();
       const tabs = document.querySelectorAll('[data-target]');
       const tabContents = document.querySelectorAll('[data-content]');
   
@@ -38,4 +57,61 @@ export class QualificationComponent implements OnInit{
         });
       });
     }
+
+    
+  // Obtener todos los qeducation
+  getAllQEducation(): void {
+    this.qeducationService.getAllQEducation()
+      .subscribe((data: any) => {
+        this.qeducation = data;
+      });
+  }
+
+  // Crear un nuevo qeducation
+  createQEducation(): void {
+    this.qeducationService.createQEducation(this.newQeducation)
+      .subscribe((data: any) => {
+        console.log(data);
+        this.getAllQEducation();
+        this.newQeducation = {
+          title: '',
+          subtitle: '',
+          date: ''
+        };
+      });
+  }
+
+  // Cancelar la edición de un qeducation existente
+cancelEdit(): void {
+  this.isEditing = false;
+  this.selectedQeducation = null;
+}
+
+// Editar un qeducation existente
+editQEducation(id: string): void {
+  this.isEditing = true;
+  this.selectedQeducation = this.qeducation.find(qeducation => qeducation.id === id);
+}
+  
+  // Actualizar un qeducation existente
+updateQEducation(): void {
+  if (this.selectedQeducation) {
+    this.qeducationService.updateQEducation(this.selectedQeducation.id, this.selectedQeducation)
+      .subscribe(updatedQEducation => {
+        console.log('Skill actualizado:', updatedQEducation);
+        this.isEditing = false;
+        this.selectedQeducation = null;
+      });
+  }
+}
+
+  // Borrar un qeducation existente
+  deleteQEducation(id: string): void {
+    this.qeducationService.deleteQEducation(id)
+      .subscribe((data: any) => {
+        console.log(data);
+        this.getAllQEducation();
+      });
+  }
+
 }

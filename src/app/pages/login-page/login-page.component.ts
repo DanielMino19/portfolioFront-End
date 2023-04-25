@@ -39,8 +39,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   onEnviar(event:Event){
-    event.preventDefault;
-    this.auth.IniciarSesion(this.form.value).subscribe(data=>{
+    event.preventDefault();
+    this.auth.Login(this.form.value).subscribe(data=>{
       console.log("DATA:" + JSON.stringify(data));
       this.ruta.navigate(['/home']);
     })

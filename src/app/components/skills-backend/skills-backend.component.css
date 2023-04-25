@@ -1,0 +1,31 @@
+.skills__icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  button{
+    display: inline-flex;
+    margin-right: 6px;
+    border: 0;
+
+ }
+
+ .skills__data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.skills__content {
+  align-items: center;
+}
+
+.skills__name {
+  margin-left: 0.5rem;
+  align-self: center;
+}
+
+.skills__buttons {
+  display: flex;
+  align-items: center;
+}

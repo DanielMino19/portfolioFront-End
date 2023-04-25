@@ -1,0 +1,57 @@
+/* .qualification__data{
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    column-gap: 1.5rem;
+    justify-content: space-between;
+    padding-left: 2rem; /* ajusta el valor según tu diseño} */
+   
+
+
+  .qualification__data.stardend {
+    justify-content: end;
+  }
+
+  .skills__icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  button{
+    display: inline-flex;
+    margin-right: 6px;
+    border: 0;
+
+ }
+
+ /* nuevo */
+
+
+.borde {
+ 
+  min-width: 10px ;
+  height: 100%;
+  background-color: var(--first-color);
+
+}
+
+.derecha {
+  position: absolute;
+  right: -5px;
+}
+
+.izquierda {
+  position: absolute;
+  left: -5px;
+}
+
+.circulito {
+  width: 25px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  background-color: var(--first-color);
+}
+
+.no-borde{
+  min-width: 10px;
+  height: 1%;
+}

@@ -1,0 +1,54 @@
+<section class="skills section" id="Skills">
+    <h2 class="section__title">Skills</h2>
+    <span class="section__subtitle">My technical level</span>
+
+    <div class="skills__container container grid">
+        <div>
+<!------------------------ SKILLS1 ------------------------>
+            <div class="skills__content skills__open" [class.skills__open]="!showSkillsContent" [class.skills__close]="showSkillsContent">
+                <div class="skills__header" (click)="toggleSkillsContent()">
+                    <i class="bi bi-braces skills__icon"></i>
+
+                    <div>
+                        <h1 class="skills__titles">Frontend developer</h1>
+                        <span class="skills__subtitle">More than 1 years</span>
+                    </div>
+                    
+                    <i class="bi bi-caret-down skills__arrow"></i>
+                </div>
+
+
+                <div *ngFor="let skill of skills" class="skills__list grid">
+                   <div class="skills__data">
+                        <div class="skills__content">
+                            <img [src]="skill.icono" alt="Skills iconos" class="skills__icon">
+                            <h3 class="skills__name">{{ skill.title }}</h3>
+                        </div>
+                        <div class="skills__buttons">
+                        <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)" (click)="editSkill(skill.id)">Editar</button>
+                        <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)"  (click)="deleteSkill(skill.id)">Borrar</button>
+                        </div>
+                   </div>
+                </div>
+                <div *ngIf="isEditing">
+                    <form (submit)="updateSkill()">
+                        <input class="contact__input" type="text" name="title" [(ngModel)]="selectedSkill.title" placeholder="Nombre">
+                        <input  class="contact__input" type="text" name="icono" [(ngModel)]="selectedSkill.icono" placeholder="Icono Link">
+                        <button class="button button--flex button--small button--link" type="submit">Guardar</button>
+                        <button class="button button--flex button--small button--link" type="button" (click)="cancelEdit()">Cancelar</button>
+                    </form>
+                </div>
+
+        </div>
+            <div *ngIf="(authService.isLoggedIn | async)">
+                <form (submit)="createSkill()">
+                <input class="contact__input" type="text" name="title" [(ngModel)]="newSkill.title" placeholder="Nombre">
+                <input  class="contact__input" type="text" name="icono" [(ngModel)]="newSkill.icono" placeholder="Icono Link">
+                <button class="button button--flex button--small button--link" type="submit">Crear skill</button>
+                </form>
+            </div>
+<!------------------------ SKILLS2 ------------------------>
+                <app-skills-backend></app-skills-backend>
+        </div>
+    </div>
+</section>

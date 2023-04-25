@@ -1,0 +1,57 @@
+<!------------------------ QUALIFICATION CONTENT 2 ------------------------>
+
+    <!------------------------ QUALIFICATION  1 ------------------------>
+    <div class="qualification__content "  id="work" data-content>
+            
+        <div *ngFor="let item of qwork; let i = index ; let last = last" class="w-100 container-general d-flex"
+        [ngClass]="{'justify-content-start': isDesktop && i % 2 == 0, 'justify-content-end': isDesktop && i % 2 != 0}">
+        <div class="d-flex "
+          [ngClass]="{'flex-row-reverse w-50': isDesktop && i % 2 == 0, 'w-50': isDesktop, 'w-100': !isDesktop}">
+
+          <div  class="borde position-relative" 
+            [ngClass]="{'derecha': isDesktop && i % 2 == 0, 'izquierda': isDesktop && i % 2 != 0, 'no-borde': last}">
+
+            <div class="circulito position-absolute top-0 start-50 translate-middle-x"></div>
+
+          </div>
+          
+          <div class="pb-4 px-4 d-flex flex-column" 
+          [ngClass]="{'text-end': isDesktop && i % 2 == 0, 'text-start': isDesktop && i % 2 != 0}">
+          
+            <h3 class="qualification__title">{{item.title}}</h3>
+            <p class="qualification__subtitle">{{item.subtitle}}</p>
+            <div class="qualification__calendar">
+                <i class="bi bi-calendar2-week"></i>
+                {{item.date}}
+            </div>
+     
+            <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)" (click)="editQWork(item.id)">Editar</button>
+            <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)"  (click)="deleteQWork(item.id)">Borrar</button>
+          </div>
+        </div>
+      </div>
+  
+
+        <div *ngIf="isEditing">
+            <form (submit)="updateQWork()">
+                <input class="contact__input" type="text" name="title" [(ngModel)]="selectedQwork.title" placeholder="Title">
+                <input  class="contact__input" type="text" name="icono" [(ngModel)]="selectedQwork.subtitle" placeholder="Lugar-tipo">
+                <input  class="contact__input" type="text" name="icono" [(ngModel)]="selectedQwork.date" placeholder="date-date">
+                <button class="button button--flex button--small button--link" type="submit">Guardar</button>
+                <button class="button button--flex button--small button--link" type="button" (click)="cancelEdit()">Cancelar</button>
+            </form>
+        </div>
+
+        <div *ngIf="(authService.isLoggedIn | async)" class="content grid">
+            <form (submit)="createQWork()">
+            <input class="contact__input" type="text" name="title" [(ngModel)]="newQWork.title" placeholder="Title">
+            <input  class="contact__input" type="text" name="icono" [(ngModel)]="newQWork.subtitle" placeholder="Lugar-Tipo">
+            <input  class="contact__input" type="text" name="icono" [(ngModel)]="newQWork.date" placeholder="date-date">
+            <button class="button button--flex button--small button--link" type="submit">Crear skill</button>
+            </form>
+        </div>
+
+
+    </div>
+
+

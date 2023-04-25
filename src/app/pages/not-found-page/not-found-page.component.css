@@ -1,0 +1,109 @@
+body{
+    background-color: var();
+}
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - var(--header-height));
+  }
+  
+  .not-found__title {
+    font-size: var(--big-font-size);
+    font-weight: var(--font-semi-bold);
+    color: var(--first-color);
+    margin-bottom: var(--mb-1-5);
+  }
+  
+  .not-found__description {
+    font-size: var(--h2-font-size);
+    font-weight: var(--font-medium);
+    color: var(--text-color);
+    margin-bottom: var(--mb-2);
+    text-align: center;
+  }
+  
+  .not-found__link {
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    color: var(--first-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--first-color);
+    padding-bottom: var(--mb-0-25);
+  }
+  
+  .not-found__link:hover {
+    color: var(--link-color);
+    border-color: var(--link-color);
+  }
+
+  .four, .zero-1, .zero-2 {
+    display: inline-block;
+  }
+  
+  .four {
+    animation: shake 0.5s infinite;
+    animation-delay: 0.50s;
+    animation-fill-mode: forwards;
+  }
+  
+  .zero-1 {
+    animation: shake 0.6s infinite;
+    animation-delay: 0.60s;
+    animation-fill-mode: forwards;
+  }
+  
+  .zero-2 {
+    animation: shake 0.7s infinite;
+    animation-delay: 0.70s;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Agregamos otro keyframe para hacer que los números se caigan */
+  @keyframes fall {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(25vh);
+    }
+  }
+  
+  .fall {
+    animation: fall 3s linear forwards;
+  }
+
+  @keyframes up {
+    0%{
+        transform: translateY(-0);
+
+    }
+    100%{
+        transform: translateY(-5%);
+    }
+  }
+
+.up{
+    animation: up 3s linear forwards;
+ 
+}
+
+
+

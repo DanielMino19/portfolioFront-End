@@ -6,73 +6,66 @@
 
                 <div class="services__container container grid">
                     <!------------------------ SERVICES 1 ------------------------>
-                    <div class="services__content">
+                    <div class="services__content" *ngFor="let item of service ; let i = index;">
                         <i class="bi bi-columns-gap services__icon"></i>
-                        <h3 class="services__title">Backend <br> Developer</h3>
+                        <h3 class="services__title">{{item.title}}</h3>
                     
 
-                    <span class="button button--flex button--small button--link services__button">
+                    <span class="button button--flex button--small button--link services__button {{i}}" (click)="modal(i)">
                         View More
                         <i class="bi bi-arrow-right button__icon"></i>
                     </span>
 
                         <div class="services__modal">
                             <div class="services__modal-content">
-                                <h4 class="services__modal-title">Backend <br>Developer </h4>
-                                <i class="bi bi-x services__modal--close"></i>
+                                <h4 class="services__modal-title">{{item.title}} </h4>
+                                <i class="bi bi-x services__modal--close" (click)="closeModal()"></i>
 
                                 <ul class="services__modal-services grid">
                                     <li class="services__moda-services">
                                         <i class="bi bi-check-circle services__modal-icon"></i>
-                                        <p>Security</p>
+                                        <p>{{item.parrafo1}}</p>
                                     </li>
                                     <li class="services__moda-services">
                                         <i class="bi bi-check-circle services__modal-icon"></i>
-                                        <p>Data base management</p>
+                                        <p>{{item.parrafo2}}</p>
                                     </li>
                                     <li class="services__moda-services">
                                         <i class="bi bi-check-circle services__modal-icon"></i>
-                                        <p>Data tranformation</p>
+                                        <p>{{item.parrafo3}}</p>
                                     </li>
                                 </ul>
                             </div>
+                   
                         </div>
-                    </div>
-                     <!------------------------ SERVICES 2 ------------------------>
-                    <div class="services__content">
-                        <i class="bi bi-code services__icon"></i>
-                        <h3 class="services__title">Frontend <br> Developer</h3>
-                    
-
-                    <span class="button button--flex button--small button--link services__button">
-                        View More
-                        <i class="bi bi-arrow-right button__icon"></i>
-                    </span>
-
-                        <div class="services__modal">
-                            <div class="services__modal-content">
-                                <h4 class="services__modal-title">Frontend <br>Developer </h4>
-                                <i class="bi bi-x services__modal--close"></i>
-
-                                <ul class="services__modal-services grid">
-                                    <li class="services__moda-services">
-                                        
-                                        <i class="bi bi-check-circle services__modal-icon"></i>
-                                        <p>Web page develoment</p>
-                                        
-                                    </li>
-                                    <li class="services__moda-services">
-                                        <i class="bi bi-check-circle services__modal-icon"></i>
-                                        <p>I develop the user interface</p>
-                                    </li>
-                                    <li class="services__moda-services">
-                                        <i class="bi bi-check-circle services__modal-icon"></i>
-                                        <p>Maintenance and web optimization</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                                 
+                        <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)" (click)="editService(item.id)">Editar</button>
+                        <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)"  (click)="deleteService(item.id)">Borrar</button>
                     </div>
 
+            
+                    <div *ngIf="isEditing">
+                        <form (submit)="updateService()">
+                            <input class="contact__input" type="text" name="titlee" [(ngModel)]="selectedService.title" placeholder="Titlee">
+                            <input  class="contact__input" type="text" name="iconoo" [(ngModel)]="selectedService.icono" placeholder="Icono class boostrap">
+                            <input  class="contact__input" type="text" name="p11" [(ngModel)]="selectedService.parrafo1" placeholder="parrafo 1">
+                            <input  class="contact__input" type="text" name="p22" [(ngModel)]="selectedService.parrafo2" placeholder="parrafo 2">
+                            <input  class="contact__input" type="text" name="p33" [(ngModel)]="selectedService.parrafo3" placeholder="parrafo 3">
+                            <button class="button button--flex button--small button--link" type="submit" >Guardar</button>
+                            <button class="button button--flex button--small button--link" type="button" (click)="cancelEdit()">Cancelar</button>
+                        </form>
+                    </div>
+    
+    
+                    <div *ngIf="(authService.isLoggedIn | async)" class="content grid">
+                        <form (submit)="createService()">
+                        <input class="contact__input" type="text" name="title" [(ngModel)]="newService.title" placeholder="Title">
+                        <input  class="contact__input" type="text" name="icono" [(ngModel)]="newService.icono" placeholder="Icono class boostrap">
+                        <input  class="contact__input" type="text" name="p1" [(ngModel)]="newService.parrafo1" placeholder="parrafo 1">
+                        <input  class="contact__input" type="text" name="p2" [(ngModel)]="newService.parrafo2" placeholder="parrafo 2">
+                        <input  class="contact__input" type="text" name="p3" [(ngModel)]="newService.parrafo3" placeholder="parrafo 3">
+                        <button class="button button--flex button--small button--link" type="submit">Crear modal</button>
+                        </form>
+                    </div>
                 </div>
             </section>
