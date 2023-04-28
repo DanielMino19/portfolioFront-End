@@ -1,13 +1,94 @@
-.loginPage{
+
+.loginPage {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 80vh;
+    width: 100vw;
+    background-color: var(--body-color);
+   
+  }
+  .login-title {
+    font-size: var(--h1-font-size);
+    margin-bottom: var(--mb-2);
+    font-weight: var(--font-semi-bold);
     text-align: center;
-}
+  }
+  .form-group {
+    margin-bottom: var(--mb-1-5);
+  }
+  .form-label {
+    font-size: var(--normal-font-size);
+    margin-bottom: var(--mb-0-5);
+    font-weight: var(--font-medium);
+  }
+  .input-login {
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: var(--mb-0-5) var(--mb-1);
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+  }
+  .btn-login {
+    background-color: var(--first-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: var(--mb-1) var(--mb-2);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-login:hover {
 
-
-
-p{
-    text-align: center;
-}
+    color: var(--first-color-second);
+  }
+  
+  .btn-login:active {
+    transform: translateY(2px);
+  }
+  
+  .form-control {
+    border: none;
+    border-radius: 5px;
+    background-color: var(--input-color);
+    color: var(--text-color);
+    padding: var(--mb-0-75) var(--mb-1);
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-1-5);
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+    outline: none;
+    background-color: var(--container-color);
+  }
+  
+  .form-label {
+    color: var(--title-color);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi-bold);
+    margin-bottom: var(--mb-0-5);
+  }
+  
+  .form-text {
+    font-size: var(--smaller-font-size);
+    margin-bottom: var(--mb-1);
+    color: var(--text-color-light);
+  }
+  
+  .is-invalid {
+    border: 2px solid red;
+  }
+  
+  .is-valid {
+    border: 2px solid var(--first-color);
+  }
+  .loginPage form {
+    background-color: var(--container-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(35, 35, 35, 0.2);
+    padding: 8rem;
+    width: 50vh;
+  }

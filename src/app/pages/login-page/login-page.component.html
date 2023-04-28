@@ -1,34 +1,35 @@
 
-  <app-navbar></app-navbar> 
+<app-navbar></app-navbar> 
+
 <div class="loginPage">
-<form [formGroup]="form" class="m-5" (ngSubmit)="onEnviar($event)">
-    <div class="mb-3">
-      <label class="form-label">Email address</label> 
-      <input formControlName="email" type="email"  class="form-control" [ngClass]="{'is-invalid': Email?.errors && Email?.touched,'is-valid': !Email?.errors && Email?.touched}" />
-      <div  class="form-text" *ngIf="Email?.errors && Email?.touched">
-        <p *ngIf="Email?.hasError('required')" class="tex-danger form-text">
-          email is required.
+  <form [formGroup]="form" class="m-5" (ngSubmit)="onEnviar($event)">
+    <h2 class="login-title" style="color: var(--title-color);">Login</h2>
+    <div class="form-group">
+      <label class="form-label" style="color: var(--text-color);">Email</label> 
+      <input formControlName="email" type="email" class="form-control input-login" [ngClass]="{'is-invalid': Email?.errors && Email?.touched,'is-valid': !Email?.errors && Email?.touched}" style="background-color: var(--input-color);">
+      <div class="form-text" *ngIf="Email?.errors && Email?.touched">
+        <p *ngIf="Email?.hasError('required')" class="text-danger form-text">
+          El correo electrónico es obligatorio.
         </p>
-        <p *ngIf="Email?.hasError('email')" class="text-danger form-text" >
-          The email format must be valid 
-        </p>
-      </div>
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Password</label>
-      <input  formControlName="password"  type="password"  class="form-control"  [ngClass]="{'is-invalid': Password?.errors && Password?.touched,'is-valid': !Password?.errors && Password?.touched}" />
-      <div  class="form-text" *ngIf="Password?.errors && Password?.touched">
-        <p *ngIf="Password?.hasError('required')" class="tex-danger form-text">
-          password is required.
-        </p>
-        <p *ngIf="Password?.errors?.['minlength']" class="text-danger form-text" >
-          must be 8 characters long 
+        <p *ngIf="Email?.hasError('email')" class="text-danger form-text">
+          Por favor, ingrese un correo electrónico válido.
         </p>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary" >Submit</button>
+    <div class="form-group">
+      <label class="form-label" style="color: var(--text-color);">Password</label>
+      <input formControlName="password" type="password" class="form-control input-login" [ngClass]="{'is-invalid': Password?.errors && Password?.touched,'is-valid': !Password?.errors && Password?.touched}" style="background-color: var(--input-color);">
+      <div class="form-text" *ngIf="Password?.errors && Password?.touched">
+        <p *ngIf="Password?.hasError('required')" class="text-danger form-text">
+          La contraseña es obligatoria.
+        </p>
+        <p *ngIf="Password?.errors?.['minlength']" class="text-danger form-text">
+          La contraseña debe tener al menos 8 caracteres.
+        </p>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-login" style="background-color: var(--first-color); border-color: var(--first-color-second);">Iniciar sesión</button>
   </form>
-  
 </div>
 
 

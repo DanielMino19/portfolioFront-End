@@ -19,8 +19,8 @@
                 Demo
                 <i class="bi bi-arrow-right button__icon"></i>
               </a>
-              <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)" (click)="editSwipper(item.id)">Editar</button>
-              <button class="button button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)"  (click)="deleteSwipper(item.id)">Borrar</button>
+              <button class="button x button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)" (click)="editSwipper(item.id)">Editar</button>
+              <button class="button x button--flex button--small button--link" *ngIf="(authService.isLoggedIn | async)"  (click)="deleteSwipper(item.id)">Borrar</button>
             </div>
            
           </div>
@@ -41,8 +41,8 @@
             <input class="contact__input" type="text" name="title" [(ngModel)]="selectedSwipper.title" placeholder="Title">
             <input  class="contact__input" type="text" name="icono" [(ngModel)]="selectedSwipper.subtitle" placeholder="Lugar-tipo">
             <input  class="contact__input" type="text" name="icono" [(ngModel)]="selectedSwipper.date" placeholder="date-date">
-            <button class="button button--flex button--small button--link" type="submit">Guardar</button>
-            <button class="button button--flex button--small button--link" type="button" (click)="cancelSwipper()">Cancelar</button>
+            <button class="buttonCrear" type="submit">Guardar</button>
+            <button class="buttonCrear" type="button" (click)="cancelSwipper()">Cancelar</button>
         </form>
     </div>
       <div *ngIf="(authService.isLoggedIn | async)">
@@ -51,7 +51,7 @@
         <input  class="contact__input" type="text" name="icono" [(ngModel)]="newSwipper.img" placeholder="Img">
         <input  class="contact__input" type="text" name="icono" [(ngModel)]="newSwipper.parrafo" placeholder="Parrafo">
         <input  class="contact__input" type="text" name="icono" [(ngModel)]="newSwipper.linkweb" placeholder="Link web">
-        <button class="button button--flex button--small button--link" type="submit">Crear skill</button>
+        <button class="buttonCrear" type="submit">Crear skill</button>
         </form>
     </div>
     </div>

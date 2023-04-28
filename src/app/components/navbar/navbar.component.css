@@ -83,3 +83,9 @@
   .navbar-toggler{
     color: var(--first-color);
   }
+
+  .Aplogo{
+    width: 6rem;
+    align-items: center;
+    
+  }

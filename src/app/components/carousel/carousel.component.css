@@ -4,10 +4,37 @@
     border-radius: 50%;
   }
   button{
-    display: flex;
+   display: flex;
     margin-right: 6px;
-    border: 0;
+    bottom: 0;
     margin-top: 3px;
     text-align: center;
     align-items: center;
+    color: var(--first-color);
+    width: 50px;
  }
+
+
+ .buttonCrear{
+  display: flex;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: var(--font-medium);
+  width: 120px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.x{
+  display: flex;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: var(--font-medium);
+  width: 120px;
+  height: 40px;
+  overflow: hidden;
+}
