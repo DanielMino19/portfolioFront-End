@@ -23,9 +23,11 @@
     font-weight: var(--font-medium);
   }
   .input-login {
+    
     border-radius: 5px;
-    border: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 1px solid;
+    box-shadow: 0 2px 10px rgba(2, 1, 1, 0.719);
+    border-color: var(--first-color);
     padding: var(--mb-0-5) var(--mb-1);
     font-size: var(--normal-font-size);
     font-weight: var(--font-medium);
@@ -33,7 +35,6 @@
   .btn-login {
     background-color: var(--first-color);
     color: #fff;
-    border: none;
     border-radius: 5px;
     padding: var(--mb-1) var(--mb-2);
     cursor: pointer;
@@ -41,16 +42,14 @@
   }
   
   .btn-login:hover {
-
     color: var(--first-color-second);
   }
   
   .btn-login:active {
-    transform: translateY(2px);
+    transform: translateY(3px);
   }
   
   .form-control {
-    border: none;
     border-radius: 5px;
     background-color: var(--input-color);
     color: var(--text-color);
@@ -89,6 +88,48 @@
     background-color: var(--container-color);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(35, 35, 35, 0.2);
-    padding: 8rem;
+    padding: 7vmax;
     width: 50vh;
+  }
+
+
+  .loading__dots {
+    display: flex;
+    justify-content: center;
+  }
+  .loading__text, .loading__dots {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+  
+  .loading__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: var(--first-color);
+    margin: 0 0.25rem;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  .loading__dot:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  
+  .loading__dot:nth-child(3) {
+    animation-delay: 1s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
   }

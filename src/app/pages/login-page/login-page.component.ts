@@ -11,8 +11,8 @@ import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
 })
 export class LoginPageComponent implements OnInit {
   form:FormGroup;
-
-
+  showError:boolean = false;
+  loading:boolean= false;
   constructor(private formBuilder:FormBuilder, private auth:AuthService, private ruta:Router){
     this.form=this.formBuilder.group(
       {
@@ -38,12 +38,24 @@ export class LoginPageComponent implements OnInit {
     return this.form.get('password');
   }
 
-  onEnviar(event:Event){
+  onEnviar(event: Event) {
     event.preventDefault();
-    this.auth.Login(this.form.value).subscribe(data=>{
-      console.log("DATA:" + JSON.stringify(data));
-      this.ruta.navigate(['/home']);
-    })
+    this.loading = true;
+    this.auth.Login(this.form.value).subscribe(
+      data => {
+        console.log("DATA:" + JSON.stringify(data));
+        this.loading = false;
+        this.ruta.navigate(['/home']);
+      },
+      error => {
+        if (error.status === 401) {
+          this.loading = false;
+          this.showError = true;
+        } else {
+          console.log("ERROR:" + JSON.stringify(error));
+        }
+      }
+    );
   }
 
 }

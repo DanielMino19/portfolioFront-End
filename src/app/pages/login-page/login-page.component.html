@@ -9,10 +9,10 @@
       <input formControlName="email" type="email" class="form-control input-login" [ngClass]="{'is-invalid': Email?.errors && Email?.touched,'is-valid': !Email?.errors && Email?.touched}" style="background-color: var(--input-color);">
       <div class="form-text" *ngIf="Email?.errors && Email?.touched">
         <p *ngIf="Email?.hasError('required')" class="text-danger form-text">
-          El correo electrónico es obligatorio.
+          E-mail is required.
         </p>
         <p *ngIf="Email?.hasError('email')" class="text-danger form-text">
-          Por favor, ingrese un correo electrónico válido.
+          Please enter a valid email address.
         </p>
       </div>
     </div>
@@ -21,14 +21,24 @@
       <input formControlName="password" type="password" class="form-control input-login" [ngClass]="{'is-invalid': Password?.errors && Password?.touched,'is-valid': !Password?.errors && Password?.touched}" style="background-color: var(--input-color);">
       <div class="form-text" *ngIf="Password?.errors && Password?.touched">
         <p *ngIf="Password?.hasError('required')" class="text-danger form-text">
-          La contraseña es obligatoria.
+          The password is required.
         </p>
         <p *ngIf="Password?.errors?.['minlength']" class="text-danger form-text">
-          La contraseña debe tener al menos 8 caracteres.
+          The password must be at least 8 characters long.
+        </p>
+      </div>
+      <div class="form-text" *ngIf="showError">
+        <p class="text-danger form-text">
+          Invalid password or email.
         </p>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary btn-login" style="background-color: var(--first-color); border-color: var(--first-color-second);">Iniciar sesión</button>
+    <button type="submit" class="btn btn-primary btn-login" style="background-color: var(--first-color); border-color: var(--first-color-second);" [disabled]="form.invalid || loading">Iniciar sesión</button>
+    <div *ngIf="loading" class="loading__dots">
+      <div class="loading__dot"></div>
+      <div class="loading__dot"></div>
+      <div class="loading__dot"></div>
+    </div>
   </form>
 </div>
 
