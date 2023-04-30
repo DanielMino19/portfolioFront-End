@@ -22,7 +22,6 @@ export class NavbarComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     this.darktheme();
-    this.cambiarHueColor;
   }
 
   cambiarHueColor(color: string) {
@@ -76,7 +75,7 @@ export class NavbarComponent implements OnInit, AfterViewInit{
     const anchorName = href.split("#")[1];
     const section = document.querySelector(`#${anchorName}`);
     section?.scrollIntoView({ behavior: 'smooth' });
-}
+  }
 
 isDarkTheme = false;
 
