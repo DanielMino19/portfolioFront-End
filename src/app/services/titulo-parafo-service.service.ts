@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class TituloParrafoService {
   id : number = 1;
-  private apiUrl = `https://portfolio-backend-dcm.onrender.com`;
+  apiUrl = environment.URL;
 
   constructor(private http: HttpClient) { }
 

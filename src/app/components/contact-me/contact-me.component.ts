@@ -29,7 +29,7 @@ sendEmail(e :Event) {
     emailjs.sendForm('default_service', 'template_32kp5wr', e.target as HTMLFormElement)
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
-        this.myForm.reset(); // reinicia el formulario después de enviarlo
+        this.myForm.reset();
       }, (error) => {
         console.log('FAILED...', error);
       });

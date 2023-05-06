@@ -2,13 +2,14 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, of } from 'rxjs';
 import { map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService  {
 
-  url="https://portfolio-backend-dcm.onrender.com";
+  apiUrl = environment.URL;
   isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
@@ -24,11 +25,11 @@ export class AuthService  {
 
   verifyToken(token: string) {
     const body = { token };
-    return this.http.post(`${this.url}/verify`, body);
+    return this.http.post(`${this.apiUrl}/verify`, body);
   }
 
    Login(creds: any) {
-    return this.http.post(`${this.url}/api/login`, creds, {
+    return this.http.post(`${this.apiUrl}/api/login`, creds, {
        observe: 'response' 
       }).pipe(map((response: HttpResponse<any>)=> {
         const body = response.body;

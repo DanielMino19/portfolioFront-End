@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarouselService {
 
-  apiUrl = 'https://portfolio-backend-dcm.onrender.com/api/swipper';
+  apiUrl = environment.URL;
 
   constructor(private http: HttpClient) { }
 
@@ -34,5 +35,9 @@ export class CarouselService {
  
   deleteSwipper(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
+
   }
+
+
 }
+

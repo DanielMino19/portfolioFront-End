@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MeserviceService {
 
-  apiUrl = 'https://portfolio-backend-dcm.onrender.com/api/service';
+  apiUrl = environment.URL;
 
   constructor(private http: HttpClient) { }
 

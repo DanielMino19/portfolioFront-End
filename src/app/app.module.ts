@@ -25,7 +25,7 @@ import { QualificationworkComponent } from './components/qualificationwork/quali
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { LoadingPageComponent } from './pages/loading-page/loading-page.component'; 
 import { LoadingServiceService } from './services/loading-service.service';
-import { CaquitaComponent } from './components/caquita/caquita.component';
+
 
 
 
@@ -50,7 +50,7 @@ import { CaquitaComponent } from './components/caquita/caquita.component';
     QualificationworkComponent,
     NotFoundPageComponent,
     LoadingPageComponent,
-    CaquitaComponent,
+    
 
 
 

@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
   }
 
   get Email()
