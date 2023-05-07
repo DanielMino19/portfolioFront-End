@@ -70,7 +70,7 @@ export class QualificationComponent implements OnInit{
   // Crear un nuevo qeducation
   createQEducation(): void {
     this.qeducationService.createQEducation(this.newQeducation)
-      .subscribe((data: any) => {
+      .subscribe((data: string) => {
         console.log(data);
         this.getAllQEducation();
         this.newQeducation = {
